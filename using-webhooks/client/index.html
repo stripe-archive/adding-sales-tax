@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <title>Stripe Payment Page Recipe</title>
     <meta name="description" content="A demo of Stripe Payment Intents" />
-
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/global.css" />
     <script src="https://js.stripe.com/v3/"></script>
@@ -31,8 +32,8 @@
               <input type="text" id="address" placeholder="Address" autocomplete="shipping street-address"/>
               <input type="text" id="city" placeholder="City" autocomplete="shipping locality"/>
               <div class="sr-combo-inputs-row">
-                <input type="text" id="state" placeholder="State" autocomplete="shipping region"/>
-                <input type="text" id="postal-code" placeholder="Postal code" autocomplete="shipping postal-code"/>
+                <input type="text" id="state" class="sr-combo-split-input" placeholder="State" autocomplete="shipping region"/>
+                <input type="text" id="postal-code" class="sr-combo-split-input" placeholder="Postal code" autocomplete="shipping postal-code"/>
               </div>
             </div>
           </div>

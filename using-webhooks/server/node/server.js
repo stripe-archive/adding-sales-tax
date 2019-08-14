@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const { resolve } = require("path");
-const envPath = resolve("../../.env");
+// Replace if using a different env file or config
+const ENV_PATH = "../../.env";
+const envPath = resolve(ENV_PATH);
 const env = require("dotenv").config({ path: envPath });
-const stripe = require("stripe")(env.parsed.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 app.use(express.static("../../client"));
 app.use(
@@ -20,7 +22,7 @@ app.use(
 
 app.get("/", (req, res) => {
   // Display checkout page
-  const path = resolve("../../client/index.html");
+  const path = resolve(process.env.STATIC_DIR + "/index.html");
   res.sendFile(path);
 });
 

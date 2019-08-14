@@ -15,15 +15,16 @@ from decimal import Decimal
 from flask import Flask, render_template, jsonify, request, send_from_directory
 from dotenv import load_dotenv, find_dotenv
 
-static_dir = f'{os.path.abspath(os.path.join(__file__ ,"../../../client"))}'
-print(static_dir)
-app = Flask(__name__, static_folder=static_dir,
-            static_url_path="", template_folder=static_dir)
-
 # Setup Stripe python client library
 load_dotenv(find_dotenv())
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 stripe.api_version = os.getenv('STRIPE_API_VERSION')
+
+static_dir = str(os.path.abspath(os.path.join(__file__ , "..", os.getenv("STATIC_DIR"))))
+
+app = Flask(__name__, static_folder=static_dir,
+            static_url_path="", template_folder=static_dir)
+
 
 
 @app.route('/', methods=['GET'])
@@ -102,11 +103,11 @@ def webhook_received():
     data_object = data['object']
 
     if event_type == 'payment_intent.succeeded':
-        print('💰 Payment received!')
+        print('Payment received!')
         # Fulfill any orders, e-mail receipts, etc
     if event_type == 'payment_intent.payment_failed':
         # Notify the customer that their order was not fulfilled
-        print('❌  Payment failed.')
+        print(' Payment failed.')
     return jsonify({'status': 'success'})
 
 

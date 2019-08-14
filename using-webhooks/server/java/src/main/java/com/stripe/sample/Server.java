@@ -98,18 +98,16 @@ public class Server {
 
     public static void main(String[] args) {
         Stripe.apiKey = System.getenv("STRIPE_SECRET_KEY");
+
         port(4242);
 
-        staticFiles.externalLocation(
-                Paths.get(Paths.get("").toAbsolutePath().getParent().getParent().toString() + "/client")
-                        .toAbsolutePath().toString());
+        staticFiles.externalLocation(Paths.get(Paths.get("").toAbsolutePath().toString(),System.getenv("STATIC_DIR")).normalize().toString());
 
         get("/", (request, response) -> {
             // Display checkout page
             response.redirect("index.html");
             return null;
         });
-
         post("/create-payment-intent", (request, response) -> {
             response.type("application/json");
 

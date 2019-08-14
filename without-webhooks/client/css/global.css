@@ -258,6 +258,11 @@ input[type="text"]::placeholder {
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
+/* Required for Edge */
+.sr-combo-split-input {
+  width: 50%;
+}
+
 /* Buttons and links */
 button {
   background: var(--accent-color);
