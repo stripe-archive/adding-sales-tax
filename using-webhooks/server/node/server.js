@@ -7,7 +7,7 @@ const envPath = resolve(ENV_PATH);
 const env = require("dotenv").config({ path: envPath });
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-app.use(express.static("../../client"));
+app.use(express.static(process.env.STATIC_DIR));
 app.use(
   express.json({
     // We need the raw body to verify webhook signatures.

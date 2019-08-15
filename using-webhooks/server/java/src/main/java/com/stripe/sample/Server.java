@@ -98,9 +98,7 @@ public class Server {
 
     public static void main(String[] args) {
         Stripe.apiKey = System.getenv("STRIPE_SECRET_KEY");
-
         port(4242);
-
         staticFiles.externalLocation(Paths.get(Paths.get("").toAbsolutePath().toString(),System.getenv("STATIC_DIR")).normalize().toString());
 
         get("/", (request, response) -> {
