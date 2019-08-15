@@ -8,7 +8,7 @@ Dotenv.load(File.dirname(__FILE__) + ENV_FILE_PATH)
 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 set :static, true
-set :public_folder, File.join(File.dirname(__FILE__), ENV['STRIPE_SECRET_KEY'])
+set :public_folder, File.join(File.dirname(__FILE__), ENV['STATIC_DIR'])
 set :port, 4242
 
 get '/' do
