@@ -8,7 +8,7 @@ require 'vendor/autoload.php';
 if (PHP_SAPI == 'cli-server') {
   $_SERVER['SCRIPT_NAME'] = '/index.php';
 }
-$ENV_PATH = '../..';
+$ENV_PATH = '../../..';
 
 $dotenv = Dotenv\Dotenv::create(realpath($ENV_PATH));
 $dotenv->load();

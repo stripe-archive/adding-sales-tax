@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import static spark.Spark.get;
 import static spark.Spark.post;
 import static spark.Spark.staticFiles;
+import static spark.Spark.port;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -160,8 +161,9 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        String ENV_FILE_PATH = "../../";
-        Dotenv dotenv = Dotenv.configure().directory(ENV_FILE_PATH).load();
+        port(4242);
+        String ENV_PATH = "../../../";
+        Dotenv dotenv = Dotenv.configure().directory(ENV_PATH).load();
 
         Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
 

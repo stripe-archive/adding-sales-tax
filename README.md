@@ -25,10 +25,9 @@ Each sample implementation includes 5 servers in Node, Ruby, Python, Java, and P
 
 Before you run the sample, be sure to you have a Stripe account with its own set of [API keys](https://stripe.com/docs/development#api-keys).
 
-To run the sample locally, copy the .env.example file to your own .env file in the integration you want to try: 
+To run the sample locally, copy the .env.example file to your own .env file: 
 
 ```
-cd using-webhooks
 cp .env.example .env
 ```
 

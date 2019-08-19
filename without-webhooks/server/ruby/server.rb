@@ -3,8 +3,8 @@ require 'sinatra'
 require 'dotenv'
 
 # Replace if using a different env file or config
-ENV_FILE_PATH = '/../../.env'
-Dotenv.load(File.dirname(__FILE__) + ENV_FILE_PATH)
+ENV_PATH = '/../../.env'.freeze
+Dotenv.load(File.dirname(__FILE__) + ENV_PATH)
 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 set :static, true
@@ -64,19 +64,19 @@ post '/pay' do
   $tax_amount = $tax_amount > 0 ? $tax_amount : calculate_tax(data['postalCode'], order_amount)
 
   begin
-    if !data['paymentIntentId']
-      # Create a new PaymentIntent for the order
-      intent = Stripe::PaymentIntent.create(
-        amount: order_amount + $tax_amount,
-        currency: data['currency'],
-        payment_method: data['paymentMethodId'],
-        confirmation_method: 'manual',
-        confirm: true
-      )
-    else
-      # Confirm the PaymentIntent to collect the money
-      intent = Stripe::PaymentIntent.confirm(data['paymentIntentId'])
-    end
+    intent = if !data['paymentIntentId']
+               # Create a new PaymentIntent for the order
+               Stripe::PaymentIntent.create(
+                 amount: order_amount + $tax_amount,
+                 currency: data['currency'],
+                 payment_method: data['paymentMethodId'],
+                 confirmation_method: 'manual',
+                 confirm: true
+               )
+             else
+               # Confirm the PaymentIntent to collect the money
+               Stripe::PaymentIntent.confirm(data['paymentIntentId'])
+             end
     generate_response(intent)
   rescue Stripe::StripeError => e
     content_type 'application/json'
