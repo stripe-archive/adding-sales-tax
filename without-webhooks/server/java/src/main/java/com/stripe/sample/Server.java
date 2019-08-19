@@ -15,6 +15,8 @@ import com.stripe.Stripe;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class Server {
     private static Gson gson = new Gson();
     private static int taxAmount = 0;
@@ -158,9 +160,13 @@ public class Server {
     }
 
     public static void main(String[] args) {
-        Stripe.apiKey = System.getenv("STRIPE_SECRET_KEY");
+        String ENV_FILE_PATH = "../../";
+        Dotenv dotenv = Dotenv.configure().directory(ENV_FILE_PATH).load();
 
-        staticFiles.externalLocation(Paths.get(Paths.get("").toAbsolutePath().toString(),System.getenv("STATIC_DIR")).normalize().toString());
+        Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
+
+        staticFiles.externalLocation(
+                Paths.get(Paths.get("").toAbsolutePath().toString(), dotenv.get("STATIC_DIR")).normalize().toString());
 
         get("/", (request, response) -> {
             // Display checkout page
@@ -171,7 +177,7 @@ public class Server {
         get("/stripe-key", (request, response) -> {
             response.type("application/json");
             // Send public key to client
-            return gson.toJson(new StripeKeyResponse(System.getenv("STRIPE_PUBLIC_KEY")));
+            return gson.toJson(new StripeKeyResponse(dotenv.get("STRIPE_PUBLIC_KEY")));
         });
 
         post("/calculate-tax", (request, response) -> {
