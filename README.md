@@ -3,7 +3,15 @@ There are two things certain in life: death and taxes.
 
 Use this sample to learn how to build a minimal checkout form with a sales tax estimator and charge a card using the new [Payment Intents API](https://stripe.com/docs/payments/payment-intents). We use simplified logic for calculating sales tax, so you can replace the logic with your own method to suit your unique business needs. The amount of sales tax to collect depends on the product, customer location, and local tax laws.
 
-See a [hosted version](https://cf6kr.sse.codesandbox.io/) of the demo in test mode or fork on [codesandbox.io](https://codesandbox.io/s/stripe-sample-sales-tax-cf6kr)
+**Demo**
+
+See a [hosted version](https://cf6kr.sse.codesandbox.io/) of the demo or fork on [codesandbox.io](https://codesandbox.io/s/stripe-sample-sales-tax-cf6kr)
+
+The demo is running in test mode -- use `4242424242424242` as a test card number with any CVC + future expiration date.
+
+Use the `4000000000003220` test card number to trigger a 3D Secure challenge flow.
+
+Read more about test cards on Stripe at https://stripe.com/docs/testing.
 
 <img src="./sales-tax-preview.png" alt="Checkout page with sales tax" align="center">
 
