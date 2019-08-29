@@ -5,9 +5,9 @@ Use this sample to learn how to build a minimal checkout form with a sales tax e
 
 **Demo**
 
-See a [hosted version](https://cf6kr.sse.codesandbox.io/) of the demo or fork on [codesandbox.io](https://codesandbox.io/s/stripe-sample-sales-tax-cf6kr)
+See a [hosted version](https://cf6kr.sse.codesandbox.io/) of the sample or fork on [codesandbox.io](https://codesandbox.io/s/stripe-sample-sales-tax-cf6kr)
 
-The demo is running in test mode -- use `4242424242424242` as a test card number with any CVC + future expiration date.
+The hosted demo is running in test mode -- use `4242424242424242` as a test card number with any CVC + future expiration date.
 
 Use the `4000000000003220` test card number to trigger a 3D Secure challenge flow.
 
