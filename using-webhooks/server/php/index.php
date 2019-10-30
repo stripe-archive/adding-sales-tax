@@ -5,9 +5,9 @@ use Stripe\Stripe;
 
 require 'vendor/autoload.php';
 
-$ENV_PATH = '../../..';
 
-$dotenv = Dotenv\Dotenv::create(realpath($ENV_PATH));
+
+$dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
 
 require './config.php';
@@ -50,7 +50,7 @@ function calculateTax($items, $postalCode)
 }
 
 $app->post('/create-payment-intent', function (Request $request, Response $response, array $args) {
-    $pub_key = getenv('STRIPE_PUBLIC_KEY');
+    $pub_key = getenv('STRIPE_PUBLISHABLE_KEY');
     $body = json_decode($request->getBody());
 
     // Create a PaymentIntent with the order amount and currency
@@ -59,7 +59,7 @@ $app->post('/create-payment-intent', function (Request $request, Response $respo
       "currency" => $body->currency,
     ]);
     
-    // Send public key and PaymentIntent details to client
+    // Send publishable key and PaymentIntent details to client
     return $response->withJson(array('publicKey' => $pub_key, 'clientSecret' => $payment_intent->client_secret, 'id' => $payment_intent->id));
 });
 
