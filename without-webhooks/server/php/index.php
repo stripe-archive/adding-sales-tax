@@ -9,7 +9,6 @@ if (PHP_SAPI == 'cli-server') {
   $_SERVER['SCRIPT_NAME'] = '/index.php';
 }
 
-
 $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
 

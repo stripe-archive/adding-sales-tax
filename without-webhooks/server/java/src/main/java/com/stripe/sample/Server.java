@@ -162,9 +162,7 @@ public class Server {
 
     public static void main(String[] args) {
         port(4242);
-        
         Dotenv dotenv = Dotenv.load();
-
         Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
 
         staticFiles.externalLocation(

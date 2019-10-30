@@ -3,7 +3,6 @@ require 'sinatra'
 require 'dotenv'
 
 # Copy the .env.example in the root into a .env file in this folder
-
 Dotenv.load
 Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
