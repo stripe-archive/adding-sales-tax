@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
 const { resolve } = require("path");
-const envPath = resolve(__dirname, "../../../.env");
-const env = require("dotenv").config({ path: envPath });
+const env = require("dotenv").config({ path: "./.env" });
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 app.use(express.static(resolve(__dirname, "../../client")));
@@ -41,9 +40,9 @@ const calculateTax = (postalCode, amount) => {
 };
 
 app.get("/stripe-key", async (req, res) => {
-  // Send public key to client
+  // Send publishable key to client
   res.send({
-    publicKey: process.env.STRIPE_PUBLIC_KEY
+    publicKey: process.env.STRIPE_PUBLISHABLE_KEY
   });
 });
 
