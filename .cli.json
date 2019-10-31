@@ -1,0 +1,17 @@
+{
+    "name": "adding-sales-tax",
+    "configureDotEnv": true,
+    "integrations": [
+      {
+        "name": "using-webhooks",
+        "clients": ["web"],
+        "servers": ["java", "node", "php", "python", "ruby"]
+      },
+      {
+        "name": "without-webhooks",
+        "clients": ["web"],
+        "servers": ["java", "node", "php", "python", "ruby"]
+      }
+    ]
+  }
+  
