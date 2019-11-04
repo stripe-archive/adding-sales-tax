@@ -87,7 +87,7 @@ var pay = function(stripe, card, clientSecret) {
   // Initiate the payment and confirm the PaymentIntent.
   // If authentication is required, confirmCardPayment will automatically display a modal
   stripe
-    .confirmCardPayment(clientSecret, { payment_method_data: data })
+    .confirmCardPayment(clientSecret, { payment_method: data })
     .then(function(result) {
       if (result.error) {
         // The card was declined (i.e. insufficient funds, card has expired, etc)
