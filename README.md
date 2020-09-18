@@ -30,7 +30,7 @@ There are two ways you can implementate this sample:
 
 ## How to run locally
 
-Before you run the sample, be sure to you have a Stripe account with its own set of [API keys](https://stripe.com/docs/development#api-keys).
+Before you run the sample, be sure to you have a Stripe account with its own set of [API keys](https://stripe.com/docs/development/quickstart#api-keys).
 
 Each sample implementation includes 5 servers in Node, Ruby, Python, Java, and PHP in the /server/ directory. 
 
@@ -64,7 +64,7 @@ Copy the .env.example file into a file named .env in the folder of the server yo
 cp .env.example using-webhooks/server/node/.env
 ```
 
-Go to the Stripe [developer dashboard](https://stripe.com/docs/development#api-keys) to find your API keys.
+Go to the Stripe [developer dashboard](https://stripe.com/docs/development/quickstart#api-keys) to find your API keys.
 
 ```
 STRIPE_PUBLISHABLE_KEY=<replace-with-your-publishable-key>
