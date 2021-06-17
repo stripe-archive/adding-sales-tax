@@ -1,3 +1,10 @@
+> <img src="https://stripe.dev/images/badges/archived.png" width="250">
+>
+> This project is deprecated and is no longer being actively maintained.
+>
+> Please see the [Stripe Tax](https://stripe.com/docs/tax).
+
+
 # Sales Tax Sample
 There are two things certain in life: death and taxes.
 
